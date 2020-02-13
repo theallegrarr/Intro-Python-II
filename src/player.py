@@ -3,16 +3,19 @@
 from item import Item
 
 class Player:
-  def __init__(self, name, room, inventory = None):
+  def __init__(self, name, room):
     self.name = name
     self.room = room
-    self.inventory = inventory
+    self.inventory = []
   
-  def getItem(self, name):
-    self.inventory.append(Item(name))
+  def getItem(self, item):
+    self.inventory.append(item)
+
+  def dropItem(self, item):
+    self.inventory.remove(item)
   
   def listItems(self):
-    if self.inventory == None:
+    if self.inventory == []:
       return 'no items collected by this player \n'
     else:
       for i in self.inventory:
